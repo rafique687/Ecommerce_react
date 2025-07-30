@@ -12,7 +12,9 @@ function Image()
     {  //alert(image.length);
         if(next<image.length-1)
         {  
-            setnext(next++);
+             //return Math.floor(Math.random() * 2);
+           // setnext(next++);
+           setnext(Math.floor(Math.random() * 2));
             //console.log(next);
         }
         else
@@ -25,10 +27,10 @@ function Image()
       <>
         <img 
         src={currntpic} 
-       style={{ width: '300px', height: '300px' }} 
+       style={{ width: '300px', height: '300px' ,marginLeft:'100px' }} 
       />
       <br />
-      <button onClick={handelNext}>Next</button>
+      <button onClick={handelNext} style={{marginLeft:'100px'}}>Next</button>
       </>
     )
 }
