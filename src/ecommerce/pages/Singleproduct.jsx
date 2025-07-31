@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 //import axios from "axios";
-import { useParams } from "react-router-dom";
-import ProductContainer from "./ProductContainer";
+import { useParams,Link } from "react-router-dom";
+
+//import ProductContainer from "./ProductContainer";
 
 function Singleproduct() {
      const {id}= useParams()
@@ -41,7 +42,11 @@ function Singleproduct() {
                 <h3>Descript</h3>
             { products.description}
             </p>
-            <button className="custom-button">Add To Cart</button>
+        
+
+<Link to={`/cart/${products.id}`}>Add To Cart</Link>
+  
+            
 
         </div>
     </div>

@@ -2,10 +2,11 @@ import { Children } from "react";
 import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import Product from "./ecommerce/component/Product";
 import Home from "./ecommerce/Home";
-import Singleproduct from "./ecommerce/component/Singleproduct";
-import About from "./ecommerce/component/About";
-import Whislist from "./ecommerce/component/whishlist";
-import Cart from "./ecommerce/component/Cart";
+
+import Singleproduct from "./ecommerce/pages/Singleproduct";
+import About from "./ecommerce/pages/About";
+import Whislist from "./ecommerce/pages/whishlist";
+import Cart from "./ecommerce/pages/Cart";
 
 
 
@@ -21,21 +22,21 @@ const router=createBrowserRouter([
         
       },   
       {
-        path:"singleproduct/:id",
+        path:"/singleproduct/:id",
         element:<Singleproduct/>,
       } ,
        {
-        path :"about",
+        path :"/about",
         element:<About/>,
        },
        {
-        path:"whishlist",
+        path:"/whishlist",
         element:<Whislist/>
        },
        {
-        path:"cart",
+        path:"/cart/:id",
         element:<Cart/>,
-       }
+       }  
     ]
    
   },

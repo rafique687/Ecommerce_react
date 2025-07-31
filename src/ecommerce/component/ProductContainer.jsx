@@ -1,7 +1,16 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 function ProductContainer({product}) {
   
-  console.log(product);
+
+    // const [id,setid]=useState(product.id);
+    // const [title,settitle]=useState(product.id);
+    // const [price,setprice]=useState(product.price);
+
+    // function handelCart()
+    // {
+
+    // }
   
   function trimContent(input) {
 
@@ -13,19 +22,26 @@ return input.split(" ").slice(0, 9).join(" ") + "...";
 
 }
   return (
-  <Link to={`singleproduct/${product.id}`}>
+ 
   <div className="product" style={{ marginTop:"10px"}}>
-    <img src={product.image} alt="Product Image"/>
+     <Link to={`singleproduct/${product.id}`}>
+    <img src={product.image} alt="Product Image" style={{ width:"100%", height:"60%"}}/>
+    </Link>
     <div className="content" >
          <h2>{trimContent(product.title)}</h2>
-        <br/>
+       
         <p>{product.price}</p>
        
     </div>
 
+  {/* <input type="hidden" value={id} name="id"/>
+  <input type="hidden" value={title} name="title"/>
+  <input type="hidden" value={price} name="price"/> */}
+  <Link to={`cart/${product.id}`}><button className="custom-button">Add To Cart</button></Link>
   </div>
-  </Link>
+
   )
 }
 
 export default ProductContainer;
+ 
