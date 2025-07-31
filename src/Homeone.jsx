@@ -12,8 +12,10 @@ function Homeone() {
   },[]);
 
   async function handelimage() {
-    let result = await fetch("https://fakestoreapi.in/api/products");
+   // let result = await fetch("https://fakestoreapi.in/api/products");
+    let result = await fetch("https://randomuser.me/api");
     let res = await result.json();
+    console.log(res);
     let temp = res.results[0];
     setphoto(temp.picture.large);
     console.log(temp);

@@ -1,15 +1,18 @@
 import Header from "./component/Header.jsx";
 import Footer from "./component/Footer.jsx";
 import Product from "./component/Product.jsx";
+import {Outlet} from "react-router-dom";
+
 import "./ecommerce.css";
 
 function Home() {
   return (
     <>
       <Header />
-      <Product />
+      <Outlet />
+      {/* <Product/> */}
       <Footer />
-    </>
+  </>
   );
 }
 export default Home;

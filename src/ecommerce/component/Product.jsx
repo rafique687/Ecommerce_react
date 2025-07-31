@@ -8,6 +8,8 @@ function Product() {
     fetchData();
   }, []);
 
+ // console.log();
+  
 
 
   async function fetchData() {

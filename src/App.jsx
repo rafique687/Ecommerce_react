@@ -1,83 +1,31 @@
-import { useState } from "react";
-import { MdDeleteOutline, MdEdit } from "react-icons/md";
+import { Children } from "react";
+import { createBrowserRouter,RouterProvider } from "react-router-dom";
+import Product from "./ecommerce/component/Product";
+import Home from "./ecommerce/Home";
+import Singleproduct from "./ecommerce/component/Singleproduct";
 
-function App() {
-  const [input, setinput] = useState("");
-  const [arr, setarr] = useState([]);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editId, setEditId] = useState(null);
-  const [Message, setMessage] = useState(null);
-  
 
-  function addtask() {
-     
-    if(isEditing)
-    {
-        setarr(
-          arr.map((obj)=>(obj.id === editId ? {...obj,task:input} :  obj))
-        );
-        setIsEditing(false);
-        setEditId(null);
 
+const router=createBrowserRouter([
+  {
+    path:"/",
+    element:<Home/>,
+    children:[
+      {
+        index:true,
+        element:<Product/>,
         
-    }
-    else {
-      const obj = { id: Date.now(), task: input };
-      setarr([...arr, obj]);
-    }
-    setinput("");
+      },   
+      {
+        path:"singleproduct/:id",
+        element:<Singleproduct/>,
+      } ,
+    ]
   }
-  function handleDelete(del) {
-    if(isEditing)
-    {
-      setMessage("Please compeletd Edit First");
+])
 
-    }
-else{
-    setarr(
-      arr.filter((obj) => {
-        if (obj.id !== del) {
-          return obj;
-        }
-      })
-    );
-  }
-  }
-
-  function handleEdit(idToEdit) {
-    const objectToEdit = arr.find((obj) => obj.id === idToEdit);
-    setinput(objectToEdit.task);
-    setIsEditing(true);
-    setEditId(idToEdit);
-    //setinput("");
-  }
-
-  return (
-    <>
-      <div>
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setinput(e.target.value)}
-        />
-        <button onClick={addtask}>{isEditing ? "Update" : "Add"}</button>
-        {/*TERNARY OPERATOR*/}
-      </div>
-     <p>{Message}</p>
-      <ul>
-        
-        {arr.map((obj) => {
-          return (
-            <li key={obj.id}>
-              {obj.task}{" "}
-              <MdDeleteOutline onClick={() => handleDelete(obj.id)} />
-              <MdEdit onClick={() => handleEdit(obj.id)} />
-            </li>
-          );
-        })}
-      </ul>
-    </>
-  );
+function App()
+{
+  return <RouterProvider router={router} />
 }
-
 export default App;
