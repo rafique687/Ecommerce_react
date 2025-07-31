@@ -21,9 +21,9 @@ function Singleproduct() {
 
   async function fetchData(id) {
     const response = await fetch("https://fakestoreapi.in/api/products/" +id);
-    const result = await response.json();
-    // const result = await axios(`https://fakestoreapi.in/api/products/${id}`);
-    // console.log(result.product);
+     const result = await response.json();
+     //const result = await axios(`https://fakestoreapi.in/api/products/${id}`);
+     console.log(result.product);
     setProduct(result.product);
   }
  // console.log(products);
