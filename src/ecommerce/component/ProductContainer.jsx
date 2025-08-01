@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import {useContext, useState } from "react";
+
+import { cartItem } from "../context/CartContext";
 function ProductContainer({product}) {
-  
+  const { addToCart}=useContext(cartItem);
 
     // const [id,setid]=useState(product.id);
     // const [title,settitle]=useState(product.id);
@@ -37,7 +39,8 @@ return input.split(" ").slice(0, 9).join(" ") + "...";
   {/* <input type="hidden" value={id} name="id"/>
   <input type="hidden" value={title} name="title"/>
   <input type="hidden" value={price} name="price"/> */}
-  <Link to={`cart/${product.id}`}><button className="custom-button">Add To Cart</button></Link>
+  {/* <Link to={`cart/${product.id}`}><button className="custom-button">Add To Cart</button></Link> */}
+  <button className="custom-button" onClick={()=>addToCart(product)}>Add To Cart</button>
   </div>
 
   )

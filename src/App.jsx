@@ -34,7 +34,7 @@ const router=createBrowserRouter([
         element:<Whislist/>
        },
        {
-        path:"/cart/:id",
+        path:"/cart",
         element:<Cart/>,
        }  
     ]

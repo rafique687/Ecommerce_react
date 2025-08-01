@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
+import {useContext, useEffect, useState } from "react";
 //import axios from "axios";
 import { useParams,Link } from "react-router-dom";
+import { cartItem } from "../context/CartContext";
 
 //import ProductContainer from "./ProductContainer";
 
 function Singleproduct() {
+  const { addToCart}=useContext(cartItem);
      const {id}= useParams()
   const [products, setProduct] = useState({});
 
@@ -44,7 +46,8 @@ function Singleproduct() {
             </p>
         
 
-<Link to={`/cart/${products.id}`}>Add To Cart</Link>
+{/* <Link to={`/cart/${products.id}`}>Add To Cart</Link> */}
+<button className="custom-button" onClick={()=>addToCart(products)}>Add To Cart</button>
   
             
 
