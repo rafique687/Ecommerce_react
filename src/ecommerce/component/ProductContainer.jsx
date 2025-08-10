@@ -1,18 +1,12 @@
 import { Link } from "react-router-dom";
 import {useContext, useState } from "react";
+import { WishlistItems } from "../context/WishlistItems.jsx"
 
 import { cartItem } from "../context/CartContext";
 function ProductContainer({product}) {
   const { addToCart}=useContext(cartItem);
+  const { AddToWhislist }=useContext(WishlistItems);
 
-    // const [id,setid]=useState(product.id);
-    // const [title,settitle]=useState(product.id);
-    // const [price,setprice]=useState(product.price);
-
-    // function handelCart()
-    // {
-
-    // }
   
   function trimContent(input) {
 
@@ -41,6 +35,7 @@ return input.split(" ").slice(0, 9).join(" ") + "...";
   <input type="hidden" value={price} name="price"/> */}
   {/* <Link to={`cart/${product.id}`}><button className="custom-button">Add To Cart</button></Link> */}
   <button className="custom-button" onClick={()=>addToCart(product)}>Add To Cart</button>
+   <button className="custom-button" onClick={()=>AddToWhislist(product)}>wishlist</button>
   </div>
 
   )
